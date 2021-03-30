@@ -3,15 +3,18 @@ class Game
 
   def start
     @player1 = Player.new('Player 1')
-    puts @player1.name
     @player2 = Player.new('Player 2')
-    puts @player2.name
 
     cumulator = 1
 
     while (@player1.lives && @player2.lives) > 0 do
       @question = Question.new
-      puts @question.ask_question
+
+      if cumulator % 2 == 0
+        puts "Player 2: #{@question.ask_question}"
+      else
+        puts "Player 1: #{@question.ask_question}"
+      end
 
       answer = gets.chomp
 
@@ -32,16 +35,16 @@ class Game
 
       if (@player1.lives > 0) && (@player2.lives > 0)
         puts "--NEW TURN--"
+        elsif cumulator % 2 == 0
+          puts "Player 1 win the score of #{@player1.lives} / 3"
+          break
+        else 
+          puts "Player 2 win the score of #{@player2.lives} / 3"
+          break
+        end
+  
+        cumulator = cumulator + 1
       end
-
-      cumulator = cumulator + 1
-    end
-
-    if cumulator % 2 == 0
-      puts "Player 2 win the score of #{@player2.lives} / 3"
-    else 
-      puts "Player 1 win the score of #{@player1.lives} / 3"
-    end
 
     puts "--GAME OVER--"
   end
