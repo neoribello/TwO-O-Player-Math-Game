@@ -7,12 +7,14 @@ class Question
 
   def ask_question 
     puts "What does #{@num1} plus #{@num2} equal?"
-    @answer
+  end
+
+  def answer(answer)
+    if @answer == answer.to_i
+      return true
+    else 
+      return false
+    end
   end
 end
 
-question = Question.new()
-puts question.ask_question
-
-# answer = Question.new()
-# puts question.answer

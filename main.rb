@@ -7,3 +7,13 @@
 # Player: Name of player, Lives of player, 
 
 # Game: The game loop
+
+# require all the other files
+
+require './game'
+require './player'
+require './question'
+
+# starting a new game
+game = Game.new
+game.start
